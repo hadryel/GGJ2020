@@ -11,6 +11,14 @@ public class Player : MonoBehaviour
 
     public float movementSpeed = 2.5f;
 
+    void OnEnable()
+    {
+        if (Carried)
+        {
+            GetComponentInChildren<Animator>().SetBool("IsCarrying", true);
+        }
+    }
+
     void FixedUpdate()
     {
         GetMovement();

@@ -10,6 +10,8 @@ public class MedicineCabinet : MonoBehaviour
     {
         // if (other.GetComponent<CarryAction>().enabled)
         //     return;
+        if (other.GetComponent<Player>().Carried)
+            return;
 
         other.GetComponent<CarryAction>().Target = Medicine;
     }

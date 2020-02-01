@@ -11,6 +11,7 @@ public class TreatAction : MonoBehaviour
         if (Target!= null && Input.GetKeyDown(KeyCode.Space))
         {
             GetComponent<Player>().TreatTarget(Target);
+            GetComponentInChildren<Animator>().SetBool("IsCarrying", false);
             // enabled = false;
         }
     }

@@ -19,7 +19,7 @@ public class InBed : MonoBehaviour
 
         if (lifeTime <= 0)
         {
-            GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f, 1f);
+            // GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f, 1f);
             enabled = false;
         }
     }

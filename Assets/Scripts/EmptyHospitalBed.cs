@@ -39,10 +39,12 @@ public class EmptyHospitalBed : MonoBehaviour, IDropTarget
         patient.GetComponent<InBed>().enabled = true;
 
         patient.transform.parent = transform;
-        patient.transform.localPosition = Vector3.zero + new Vector3(0.5f, 0, 0);
+        patient.transform.localPosition = Vector3.zero + new Vector3(-0.57f, 0.13f, 0);
         GetComponent<EmptyHospitalBed>().enabled = false;
         var occupiedBed = GetComponent<OccupiedHospitalBed>();
         occupiedBed.Target = patient;
         occupiedBed.enabled = true;
+
+        player.Carried = null;
     }
 }

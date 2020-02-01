@@ -16,6 +16,8 @@ public class Medicine : MonoBehaviour, ICarriable
 
     public void Drop(Player player, GameObject Target)
     {
+        player.Carried = null;
+
         GameObject.Destroy(gameObject);
     }
 }
