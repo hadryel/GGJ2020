@@ -8,10 +8,10 @@ public class TreatAction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Target!= null && Input.GetKeyDown(KeyCode.Space))
         {
             GetComponent<Player>().TreatTarget(Target);
-            enabled = false;
+            // enabled = false;
         }
     }
 }

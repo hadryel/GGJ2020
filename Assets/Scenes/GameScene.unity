@@ -3415,7 +3415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8bc90290cfd9fab8cb63f18cccd59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarryingSlot: {fileID: 654332884}
+  CarryingSlot: {fileID: 654332885}
   Carried: {fileID: 0}
   currentDoor: {fileID: 0}
   movementSpeed: 2.5
@@ -3426,7 +3426,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793268420}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfb2fb602d2ffb7bf900f1aa84af16c7, type: 3}
   m_Name: 
@@ -3439,7 +3439,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793268420}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 840e1cf1824e39432a00b6e51e1ca997, type: 3}
   m_Name: 
@@ -3452,7 +3452,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793268420}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1d43dc821389ea63a8786f041516329, type: 3}
   m_Name: 

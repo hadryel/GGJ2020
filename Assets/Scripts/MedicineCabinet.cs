@@ -8,16 +8,15 @@ public class MedicineCabinet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<CarryAction>().enabled)
-            return;
+        // if (other.GetComponent<CarryAction>().enabled)
+        //     return;
 
         other.GetComponent<CarryAction>().Target = Medicine;
-        other.GetComponent<CarryAction>().enabled = true;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        other.GetComponent<CarryAction>().Target = null;
-        other.GetComponent<CarryAction>().enabled = false;
+        if (other.GetComponent<CarryAction>().Target == Medicine)
+            other.GetComponent<CarryAction>().Target = null;
     }
 }

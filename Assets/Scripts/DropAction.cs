@@ -8,10 +8,9 @@ public class DropAction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Target != null && Input.GetKeyDown(KeyCode.Space))
         {
-            GetComponent<Player>().DropCarried(Target);
-            enabled = false;
+            Target.GetComponent<IDropTarget>().Drop(GetComponent<Player>());
         }
     }
 }

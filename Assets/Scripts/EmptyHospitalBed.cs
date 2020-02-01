@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmptyHospitalBed : MonoBehaviour
+public class EmptyHospitalBed : MonoBehaviour, IDropTarget
 {
     void Start()
     {
@@ -17,7 +17,6 @@ public class EmptyHospitalBed : MonoBehaviour
         {
             var dropAction = player.GetComponent<DropAction>();
             dropAction.Target = this.gameObject;
-            dropAction.enabled = true;
         }
     }
 
@@ -25,11 +24,21 @@ public class EmptyHospitalBed : MonoBehaviour
     {
         var player = other.GetComponent<Player>();
 
-        if (player.Carried != null && player.Carried.GetComponent<Patient>() != null)
+        if (player.GetComponent<DropAction>().Target == this.gameObject)
         {
             var dropAction = player.GetComponent<DropAction>();
             dropAction.Target = null;
-            dropAction.enabled = false;
         }
+    }
+
+    public void Drop(Player player)
+    {
+        var dropObject = player.Carried;
+        dropObject.transform.parent = transform;
+        dropObject.transform.localPosition = Vector3.zero + new Vector3(0.5f, 0, 0);
+        GetComponent<EmptyHospitalBed>().enabled = false;
+        var occupiedBed = GetComponent<OccupiedHospitalBed>();
+        occupiedBed.Target = dropObject;
+        occupiedBed.enabled = true;
     }
 }

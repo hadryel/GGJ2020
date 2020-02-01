@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DischargeArea : MonoBehaviour
+public class DischargeArea : MonoBehaviour, IDropTarget
 {
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,7 +12,6 @@ public class DischargeArea : MonoBehaviour
         {
             var dropAction = player.GetComponent<DropAction>();
             dropAction.Target = this.gameObject;
-            dropAction.enabled = true;
         }
     }
 
@@ -20,11 +19,15 @@ public class DischargeArea : MonoBehaviour
     {
         var player = other.GetComponent<Player>();
 
-        if (player.Carried != null && player.Carried.GetComponent<Patient>() != null && player.Carried.GetComponent<Patient>().treated)
+        if (player.GetComponent<DropAction>().Target == this.gameObject)
         {
             var dropAction = player.GetComponent<DropAction>();
             dropAction.Target = null;
-            dropAction.enabled = false;
         }
+    }
+
+    public void Drop(Player player)
+    {
+        GameObject.Destroy(player.Carried);
     }
 }

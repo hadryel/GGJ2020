@@ -32,16 +32,14 @@ public class OccupiedHospitalBed : MonoBehaviour
     {
         var player = other.GetComponent<Player>();
 
-        if (player.Carried != null && player.Carried.GetComponent<Medicine>() != null)
+        if (player.GetComponent<TreatAction>().Target == Target)
         {
             var treatAction = player.GetComponent<TreatAction>();
             treatAction.Target = null;
-            treatAction.enabled = false;
         }
-        else if (Target != null && Target.GetComponent<Patient>().treated)
+        else if (player.GetComponent<CarryAction>().Target == Target)
         {
             player.GetComponent<CarryAction>().Target = null;
-            player.GetComponent<CarryAction>().enabled = false;
         }
     }
 }

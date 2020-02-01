@@ -8,10 +8,9 @@ public class CarryAction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Target != null && Input.GetKeyDown(KeyCode.Space))
         {
-            GetComponent<Player>().SetCarried(Target);
-            enabled = false;
+            Target.GetComponent<ICarriable>().Carry(GetComponent<Player>());
         }
     }
 }
