@@ -5890,6 +5890,7 @@ GameObject:
   - component: {fileID: 2126605647}
   - component: {fileID: 2126605646}
   - component: {fileID: 2126605645}
+  - component: {fileID: 2126605642}
   m_Layer: 0
   m_Name: Patient
   m_TagString: Untagged
@@ -5912,6 +5913,26 @@ Transform:
   m_Father: {fileID: 1135404009}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2126605642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126605640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67109ac4f68fb56e39670c1548aafea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeadSick: {fileID: 465712049}
+  HeadHealth: {fileID: 2147328113}
+  TorsoSick: {fileID: 1778072961}
+  TorsoHealth: {fileID: 961871523}
+  ArmFSick: {fileID: 579169044}
+  ArmFHealth: {fileID: 1362022641}
+  ArmBSick: {fileID: 1069419745}
+  ArmBHealth: {fileID: 1195417755}
 --- !u!61 &2126605643
 BoxCollider2D:
   m_ObjectHideFlags: 0

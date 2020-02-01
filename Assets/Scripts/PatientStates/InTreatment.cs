@@ -17,8 +17,8 @@ public class InTreatment : MonoBehaviour
 
         if (lifeTime <= 0)
         {
-            // GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f, 1f);
             GetComponent<Patient>().treated = true;
+            GetComponent<PatientSpriteHandler>().ChangeToHealthy(true);
 
             enabled = false;
         }
