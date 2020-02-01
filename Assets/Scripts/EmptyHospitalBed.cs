@@ -33,12 +33,16 @@ public class EmptyHospitalBed : MonoBehaviour, IDropTarget
 
     public void Drop(Player player)
     {
-        var dropObject = player.Carried;
-        dropObject.transform.parent = transform;
-        dropObject.transform.localPosition = Vector3.zero + new Vector3(0.5f, 0, 0);
+        var patient = player.Carried;
+
+        patient.GetComponent<InLine>().enabled = false;
+        patient.GetComponent<InBed>().enabled = true;
+
+        patient.transform.parent = transform;
+        patient.transform.localPosition = Vector3.zero + new Vector3(0.5f, 0, 0);
         GetComponent<EmptyHospitalBed>().enabled = false;
         var occupiedBed = GetComponent<OccupiedHospitalBed>();
-        occupiedBed.Target = dropObject;
+        occupiedBed.Target = patient;
         occupiedBed.enabled = true;
     }
 }

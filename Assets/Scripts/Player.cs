@@ -26,6 +26,18 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
             movement.x = movementSpeed;
 
+        if (movement.x != 0)
+        {
+            var angle = (movement.x > 0) ? 180 : 0;
+            transform.GetChild(0).localRotation = Quaternion.AngleAxis(angle, Vector3.up);
+
+            GetComponentInChildren<Animator>().SetBool("IsWalking", true);
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().SetBool("IsWalking", false);
+        }
+
         rb2d.velocity = movement;
     }
 

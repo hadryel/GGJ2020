@@ -6,6 +6,10 @@ public class Patient : MonoBehaviour, ICarriable
 {
     public bool treated;
 
+    void Update(){
+
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         other.GetComponent<CarryAction>().Target = this.gameObject;
@@ -19,8 +23,8 @@ public class Patient : MonoBehaviour, ICarriable
 
     public void Treat(Medicine medicine)
     {
-        GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f, 1f);
-        treated = true;
+        GetComponent<InBed>().enabled = false;
+        GetComponent<InTreatment>().enabled = true;
 
         GameObject.Destroy(medicine.gameObject);
     }

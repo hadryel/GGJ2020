@@ -53,8 +53,6 @@ public class ElevatorDoor : MonoBehaviour
     {
         animator.SetTrigger("DoorCloseFinishing");
         animator.SetTrigger("DoorCloseStarted");
-        // animator.SetBool("DoorOpenFinishing", false);
-        // animator.SetBool("DoorOpenStarted", false);
 
         yield return new WaitUntil(DoorClosing);
 

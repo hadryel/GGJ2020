@@ -61,7 +61,7 @@ public class Elevator : MonoBehaviour
         floor.enabled = true;
 
         Vector3 destinyPos = player.transform.position;
-        destinyPos.y = floor.transform.position.y - 0.82f;
+        destinyPos.y = floor.transform.position.y - 0.55f;
         player.transform.position = destinyPos;
     }
 }

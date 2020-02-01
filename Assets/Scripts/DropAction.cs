@@ -10,6 +10,7 @@ public class DropAction : MonoBehaviour
     {
         if (Target != null && Input.GetKeyDown(KeyCode.Space))
         {
+            GetComponentInChildren<Animator>().SetBool("IsCarrying", false);
             Target.GetComponent<IDropTarget>().Drop(GetComponent<Player>());
         }
     }

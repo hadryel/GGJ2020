@@ -10,6 +10,7 @@ public class CarryAction : MonoBehaviour
     {
         if (Target != null && Input.GetKeyDown(KeyCode.Space))
         {
+            GetComponentInChildren<Animator>().SetBool("IsCarrying", true);
             Target.GetComponent<ICarriable>().Carry(GetComponent<Player>());
         }
     }
