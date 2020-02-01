@@ -9,6 +9,7 @@ public class PatientLine : MonoBehaviour
     void Start()
     {
         AddPatientInLine();
+        AddPatientInLine();
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class PatientLine : MonoBehaviour
         newPatinet.transform.localPosition = Vector3.zero;
 
         // Set life spans, treatment type...
-        
+
         newPatinet.SetActive(true);
     }
 }

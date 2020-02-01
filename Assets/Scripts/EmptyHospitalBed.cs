@@ -11,6 +11,9 @@ public class EmptyHospitalBed : MonoBehaviour, IDropTarget
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (!enabled)
+            return;
+
         var player = other.GetComponent<Player>();
 
         if (player.Carried != null && player.Carried.GetComponent<Patient>() != null)
