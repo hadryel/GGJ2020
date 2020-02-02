@@ -14,23 +14,26 @@ public class PatientLine : MonoBehaviour
 
     void Update()
     {
-
+        if (LinePositions[0].transform.childCount == 0)
+        {
+            StartCoroutine(CycleLine());
+        }
     }
 
     IEnumerator StartRoutine()
     {
-        Debug.Log(Random.Range(0.5f, 1.5f));
-        yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
+        float minTime = 5f;
+        float maxTime = 10f;
+
+        yield return new WaitForSeconds(Random.Range(minTime, maxTime));
 
         AddPatientInLine();
 
-        yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
-        Debug.Log(Random.Range(0.5f, 1.5f));
+        yield return new WaitForSeconds(Random.Range(minTime, maxTime));
 
         AddPatientInLine();
 
-        yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
-        Debug.Log(Random.Range(0.5f, 1.5f));
+        yield return new WaitForSeconds(Random.Range(minTime, maxTime));
 
         AddPatientInLine();
     }
@@ -64,6 +67,34 @@ public class PatientLine : MonoBehaviour
         newPatient.GetComponentInChildren<Animator>().SetBool("IsWalking", false);
 
         newPatient.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    IEnumerator CycleLine()
+    {
+        for (int i = 0; i < LinePositions.Length - 1; i++)
+        {
+            if (LinePositions[i].transform.childCount == 0 && LinePositions[i + 1].transform.childCount == 1)
+            {
+                GameObject patient = LinePositions[i + 1].transform.GetChild(0).gameObject;
+
+                patient.GetComponentInChildren<Animator>().SetBool("IsWalking", true);
+
+                patient.transform.parent = LinePositions[i].transform;
+
+                while (patient.transform.localPosition.x > 0)
+                {
+                    patient.transform.localPosition += new Vector3(-1f * Time.deltaTime, 0, 0);
+                    yield return null;
+                }
+
+                patient.transform.localPosition = Vector3.zero;
+
+                patient.GetComponentInChildren<Animator>().SetBool("IsWalking", false);
+
+                if (i == 0)
+                    patient.GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
     }
 
     public GameObject GetFreeLinePosition()

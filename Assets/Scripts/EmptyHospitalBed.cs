@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EmptyHospitalBed : MonoBehaviour, IDropTarget
 {
+    public bool flipped;
+
     void Start()
     {
 
@@ -43,6 +45,9 @@ public class EmptyHospitalBed : MonoBehaviour, IDropTarget
 
         patient.transform.parent = transform;
         patient.transform.localPosition = Vector3.zero + new Vector3(-0.57f, 0.13f, 0);
+
+        patient.transform.localRotation = Quaternion.Euler(0f, 0f, -90f);
+
         GetComponent<EmptyHospitalBed>().enabled = false;
         var occupiedBed = GetComponent<OccupiedHospitalBed>();
         occupiedBed.Target = patient;
