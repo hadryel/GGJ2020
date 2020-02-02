@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject Menu;
+    public GameObject Options;
+    public GameObject Credits;
+
     void Start()
     {
 
@@ -23,5 +27,19 @@ public class MainMenu : MonoBehaviour
             gm.GetComponent<GameManager>().Reset();
 
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void ShowCredits()
+    {
+        Menu.SetActive(false);
+        Options.SetActive(false);
+        Credits.SetActive(true);
+    }
+
+    public void ShowMenu()
+    {
+        Options.SetActive(false);
+        Credits.SetActive(false);
+        Menu.SetActive(true);
     }
 }
