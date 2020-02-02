@@ -34,8 +34,22 @@ public class Patient : MonoBehaviour, ICarriable
 
     public void Treat(Medicine medicine)
     {
-        GetComponent<InBed>().enabled = false;
-        GetComponent<InTreatment>().enabled = true;
+        var inBed = GetComponent<InBed>();
+
+        if (medicine.currentMedicine == inBed.firstTreatment)
+        {
+            inBed.firstTreatment = -1;
+        }
+        else if (medicine.currentMedicine == inBed.secondTreatment)
+        {
+            inBed.secondTreatment = -1;
+        }
+
+        if (inBed.firstTreatment == -1 && inBed.secondTreatment == -1)
+        {
+            GetComponent<InBed>().enabled = false;
+            GetComponent<InTreatment>().enabled = true;
+        }
 
         GameObject.Destroy(medicine.gameObject);
     }

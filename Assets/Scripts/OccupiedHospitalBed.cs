@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OccupiedHospitalBed : MonoBehaviour
 {
+    // The treatment target
     public GameObject Target;
     public GameObject Tape;
 
@@ -19,7 +20,12 @@ public class OccupiedHospitalBed : MonoBehaviour
 
         var player = other.GetComponent<Player>();
 
-        if (player.Carried != null && player.Carried.GetComponent<Medicine>() != null)
+        Medicine medicine = null; // The true Jam logic
+
+        if (player.Carried != null)
+            medicine = player.Carried.GetComponent<Medicine>();
+
+        if (player.Carried != null && medicine != null && IsMedicineCompatible(medicine))
         {
             var treatAction = player.GetComponent<TreatAction>();
             treatAction.Target = Target;
@@ -56,5 +62,12 @@ public class OccupiedHospitalBed : MonoBehaviour
         GetComponent<EmptyHospitalBed>().enabled = false;
         enabled = false;
         Tape.SetActive(true);
+    }
+
+    bool IsMedicineCompatible(Medicine medicine)
+    {
+        var inBed = Target.GetComponent<InBed>();
+
+        return medicine.currentMedicine == inBed.firstTreatment || medicine.currentMedicine == inBed.secondTreatment;
     }
 }

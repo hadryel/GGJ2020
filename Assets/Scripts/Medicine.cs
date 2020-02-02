@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class Medicine : MonoBehaviour, ICarriable
 {
+    public int currentMedicine = 0;
+    public Sprite[] MedicineSprites;
+    public string[] MedicineNames;
+
     public MedicineCabinet MedicineCabinet;
+
+    public void UpdateMedicine(bool directionUp)
+    {
+        currentMedicine += (directionUp) ? 1 : -1;
+
+        if (currentMedicine < 0)
+            currentMedicine += MedicineSprites.Length;
+        else if (currentMedicine >= MedicineSprites.Length)
+            currentMedicine = 0;
+
+        GetComponent<SpriteRenderer>().sprite = MedicineSprites[currentMedicine];        
+    }
 
     public void Carry(Player player)
     {
@@ -18,16 +34,10 @@ public class Medicine : MonoBehaviour, ICarriable
         player.GetComponent<CarryAction>().Target = null;
 
         MedicineCabinet.ActivateLogic(player);
-        // var dropAction = player.GetComponent<DropAction>();
-        // dropAction.enabled = false;
-        // dropAction.Target = MedicineCabinet.gameObject;
-        // dropAction.enabled = true;
     }
 
     public void Drop(Player player, GameObject Target)
     {
-        // Debug.Log("Dropou!");
-
         player.Carried = null;
 
         GameObject.Destroy(gameObject);

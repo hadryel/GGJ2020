@@ -59,8 +59,12 @@ public class PatientLine : MonoBehaviour
     public void AddPatientInLine()
     {
         var newPatinet = GameObject.Instantiate(Patient);
-
+        var inBed = newPatinet.GetComponent<InBed>();
         // Set life spans, treatment type...
+        inBed.firstTreatment = Random.Range(0, 4); //Randomize this later
+
+        //Randomize to see if is 2 treatments
+        inBed.secondTreatment = Random.Range(0, 4);
 
         newPatinet.transform.parent = GetFreeLinePosition().transform;
         newPatinet.transform.position = LinePositions[4].transform.position;

@@ -57,4 +57,9 @@ public class MedicineCabinet : MonoBehaviour, IDropTarget
 
         ActivateLogic(player);
     }
+
+    public void CycleMedicine(Player player, bool directionUp)
+    {
+        player.Carried.GetComponent<Medicine>().UpdateMedicine(directionUp);
+    }
 }

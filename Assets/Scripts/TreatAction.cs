@@ -12,7 +12,6 @@ public class TreatAction : MonoBehaviour
         {
             GetComponent<Player>().TreatTarget(Target);
             GetComponentInChildren<Animator>().SetBool("IsCarrying", false);
-            // enabled = false;
         }
     }
 }
