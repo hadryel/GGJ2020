@@ -42,6 +42,7 @@ public class EmptyHospitalBed : MonoBehaviour, IDropTarget
 
         patient.GetComponent<InLine>().enabled = false;
         patient.GetComponent<InBed>().enabled = true;
+        patient.GetComponent<InBed>().CurrentBed = gameObject;
 
         patient.transform.parent = transform;
         patient.transform.localPosition = Vector3.zero + new Vector3(-0.57f, 0.13f, 0);

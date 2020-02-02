@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InBed : MonoBehaviour
 {
+    public GameObject CurrentBed;
+
     float lifeTime = 10f;
 
     // Start is called before the first frame update
@@ -19,8 +21,11 @@ public class InBed : MonoBehaviour
 
         if (lifeTime <= 0)
         {
-            // GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f, 1f);
+            CurrentBed.GetComponent<OccupiedHospitalBed>().BreakBed();
+            GetComponent<PatientSpriteHandler>().Die();
             enabled = false;
+
+            // Add to minus score here
         }
     }
 }

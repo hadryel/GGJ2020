@@ -10,6 +10,12 @@ public class Player : MonoBehaviour
     public ElevatorDoor currentDoor;
 
     public float movementSpeed = 2.5f;
+    public GameManager GameManager;
+
+    void Awake()
+    {
+        GameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
 
     void OnEnable()
     {

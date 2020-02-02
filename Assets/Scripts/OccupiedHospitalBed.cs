@@ -5,6 +5,7 @@ using UnityEngine;
 public class OccupiedHospitalBed : MonoBehaviour
 {
     public GameObject Target;
+    public GameObject Tape;
 
     void Start()
     {
@@ -45,5 +46,15 @@ public class OccupiedHospitalBed : MonoBehaviour
         {
             player.GetComponent<CarryAction>().Target = null;
         }
+    }
+
+    public void BreakBed()
+    {
+        Target.GetComponent<Patient>().GameManager.KillPatient();
+
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<EmptyHospitalBed>().enabled = false;
+        enabled = false;
+        Tape.SetActive(true);
     }
 }

@@ -5,6 +5,13 @@ using UnityEngine;
 public class Patient : MonoBehaviour, ICarriable
 {
     public bool treated;
+    public bool treatmentStarted;
+    public GameManager GameManager;
+
+    void Awake()
+    {
+        GameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
 
     void Update()
     {
@@ -35,7 +42,9 @@ public class Patient : MonoBehaviour, ICarriable
 
     public void Carry(Player player)
     {
-        // GetComponent<SpriteRenderer>().sortingOrder = 2;
+        treatmentStarted = true;
+        GetComponentInChildren<Animator>().SetBool("IsCarried", treatmentStarted);
+
         enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
 

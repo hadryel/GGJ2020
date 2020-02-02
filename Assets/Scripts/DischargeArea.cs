@@ -28,6 +28,8 @@ public class DischargeArea : MonoBehaviour, IDropTarget
 
     public void Drop(Player player)
     {
+        player.GameManager.SavePatient();
+
         GameObject.Destroy(player.Carried);
     }
 }

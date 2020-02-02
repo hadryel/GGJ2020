@@ -21,6 +21,11 @@ public class PatientSpriteHandler : MonoBehaviour
 
     }
 
+    void OnEnable()
+    {
+        GetComponentInChildren<Animator>().SetBool("IsCarried", GetComponent<Patient>().treatmentStarted);
+    }
+
     public void ChangeToHealthy(bool healthy)
     {
         HeadSick.SetActive(!healthy);
@@ -31,5 +36,17 @@ public class PatientSpriteHandler : MonoBehaviour
         ArmFHealth.SetActive(healthy);
         ArmBSick.SetActive(!healthy);
         ArmBHealth.SetActive(healthy);
+    }
+
+    public void Die()
+    {
+        HeadSick.GetComponentInChildren<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+        HeadHealth.GetComponentInChildren<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+        TorsoSick.GetComponentInChildren<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+        TorsoHealth.GetComponentInChildren<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+        ArmFSick.GetComponentInChildren<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+        ArmFHealth.GetComponentInChildren<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+        ArmBSick.GetComponentInChildren<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+        ArmBHealth.GetComponentInChildren<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
     }
 }
