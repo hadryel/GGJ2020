@@ -36,8 +36,13 @@ public class GameManager : MonoBehaviour
 
         if (KillCounter <= 0)
         {
-            DontDestroyOnLoad(gameObject);
-            SceneManager.LoadScene("Game Over");
+            GameOver();
         }
+    }
+
+    public void GameOver()
+    {
+        DontDestroyOnLoad(gameObject);
+        SceneManager.LoadScene("Game Over");
     }
 }

@@ -2584,7 +2584,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: -8590065670270115602, guid: a03bd78240788f655ac6a807f3d4afd4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3441,6 +3441,7 @@ MonoBehaviour:
   - {fileID: 215564897}
   - {fileID: 1332951235}
   Patient: {fileID: 564613273385467884, guid: 99f74f298e93b3045a479897e28f1cac, type: 3}
+  GameManager: {fileID: 0}
 --- !u!1 &1166711598
 GameObject:
   m_ObjectHideFlags: 0
@@ -6417,6 +6418,7 @@ MonoBehaviour:
   Carried: {fileID: 0}
   currentDoor: {fileID: 0}
   movementSpeed: 2.5
+  GameManager: {fileID: 0}
 --- !u!114 &1793268426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8013,4 +8015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea2d252dc89a99c1866a8b405de8e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathCounter: 5
+  MaxKills: 5
+  KillCounter: 5
+  SaveCounter: 0

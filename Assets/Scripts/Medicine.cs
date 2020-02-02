@@ -8,8 +8,8 @@ public class Medicine : MonoBehaviour, ICarriable
     {
         var carried = GameObject.Instantiate(this.gameObject);
         carried.transform.parent = player.CarryingSlot;
-        carried.transform.localPosition = new Vector3(0.554f, 1.029f, 0);
-        carried.transform.localRotation = Quaternion.AngleAxis(90f, Vector3.forward);
+        carried.transform.localPosition = new Vector3(-0.18f, 1.1f, 0);
+        carried.transform.localRotation = Quaternion.identity;
         carried.SetActive(true);
         player.Carried = carried;
     }

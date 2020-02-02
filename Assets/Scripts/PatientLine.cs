@@ -7,35 +7,53 @@ public class PatientLine : MonoBehaviour
     public GameObject[] LinePositions;
 
     public GameObject Patient;
+
+    public GameManager GameManager;
+
+    float minimumInterval = 10f;
+    float maximumInterval = 20f;
+
+    float currentInterval;
     void Start()
     {
-        StartCoroutine(StartRoutine());
+        currentInterval = Random.Range(minimumInterval, maximumInterval);
     }
 
     void Update()
     {
+        UpdateLineTimer();
+
         if (LinePositions[0].transform.childCount == 0)
         {
             StartCoroutine(CycleLine());
         }
     }
 
-    IEnumerator StartRoutine()
+    void UpdateLineTimer()
     {
-        float minTime = 5f;
-        float maxTime = 10f;
+        currentInterval -= Time.deltaTime;
 
-        yield return new WaitForSeconds(Random.Range(minTime, maxTime));
+        if (currentInterval <= 0)
+        {
+            if (LinePositions[4].transform.childCount > 0)
+            {
+                GameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+                GameManager.GameOver();
+            }
+            else
+            {
+                AddPatientInLine();
 
-        AddPatientInLine();
+                currentInterval = Random.Range(minimumInterval, maximumInterval);
 
-        yield return new WaitForSeconds(Random.Range(minTime, maxTime));
+                CalculateProgress();
+            }
+        }
+    }
 
-        AddPatientInLine();
-
-        yield return new WaitForSeconds(Random.Range(minTime, maxTime));
-
-        AddPatientInLine();
+    public void CalculateProgress()
+    {
+        // Adjust timers as the player saves patients
     }
 
     public void AddPatientInLine()
