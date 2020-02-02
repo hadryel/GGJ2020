@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Medicine : MonoBehaviour, ICarriable
 {
+    public MedicineCabinet MedicineCabinet;
+
     public void Carry(Player player)
     {
         var carried = GameObject.Instantiate(this.gameObject);
@@ -12,10 +14,20 @@ public class Medicine : MonoBehaviour, ICarriable
         carried.transform.localRotation = Quaternion.identity;
         carried.SetActive(true);
         player.Carried = carried;
+
+        player.GetComponent<CarryAction>().Target = null;
+
+        MedicineCabinet.ActivateLogic(player);
+        // var dropAction = player.GetComponent<DropAction>();
+        // dropAction.enabled = false;
+        // dropAction.Target = MedicineCabinet.gameObject;
+        // dropAction.enabled = true;
     }
 
     public void Drop(Player player, GameObject Target)
     {
+        // Debug.Log("Dropou!");
+
         player.Carried = null;
 
         GameObject.Destroy(gameObject);
