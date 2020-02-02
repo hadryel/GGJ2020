@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class PatientLine : MonoBehaviour
 {
+    int patientCount = 0;
     public GameObject[] LinePositions;
 
     public GameObject Patient;
 
     public GameManager GameManager;
 
-    float minimumInterval = 10f;
-    float maximumInterval = 20f;
+    float minimumInterval = 5f;
+    float maximumInterval = 10f;
 
     float currentInterval;
     void Start()
     {
         currentInterval = Random.Range(minimumInterval, maximumInterval);
+        minimumInterval = 10f;
+        minimumInterval = 15f;
     }
 
     void Update()
@@ -58,13 +61,12 @@ public class PatientLine : MonoBehaviour
 
     public void AddPatientInLine()
     {
+        patientCount++;
+
         var newPatinet = GameObject.Instantiate(Patient);
         var inBed = newPatinet.GetComponent<InBed>();
-        // Set life spans, treatment type...
-        inBed.firstTreatment = Random.Range(0, 4); //Randomize this later
 
-        //Randomize to see if is 2 treatments
-        inBed.secondTreatment = Random.Range(0, 4);
+        SetTreatments(inBed);
 
         newPatinet.transform.parent = GetFreeLinePosition().transform;
         newPatinet.transform.position = LinePositions[4].transform.position;
@@ -74,6 +76,96 @@ public class PatientLine : MonoBehaviour
         StartCoroutine(RenderPatientEntrance(newPatinet));
     }
 
+    //Set the current treatment for the new patient and progress the game
+    void SetTreatments(InBed inBed)
+    {
+        inBed.firstTreatment = Random.Range(0, 4); //Randomize this later
+
+        if (patientCount < 3)
+        {
+            // Set life spans, treatment type...
+        }
+        else if (patientCount < 7)
+        {
+            if (Random.Range(0, 2) > 1)
+            {
+                inBed.secondTreatment = Random.Range(0, 4); //Randomize this later
+
+                inBed.lifeTime += Random.Range(10f, 20f);
+            }
+        }
+        else if (patientCount < 10)
+        {
+            // Set life spans, treatment type...
+            if (Random.Range(0, 1) > 1)
+            {
+                inBed.secondTreatment = Random.Range(0, 4); //Randomize this later
+
+                inBed.lifeTime += Random.Range(10f, 20f);
+            }
+        }
+        else if (patientCount < 15)
+        {
+            // Set life spans, treatment type...
+            if (Random.Range(0, 1) > 1)
+            {
+                inBed.secondTreatment = Random.Range(0, 4); //Randomize this later
+
+                inBed.lifeTime += Random.Range(5f, 20f);
+            }
+        }
+        else if (patientCount < 20)
+        {
+            // Set life spans, treatment type...
+
+            inBed.secondTreatment = Random.Range(0, 4); //Randomize this later
+
+            inBed.lifeTime += Random.Range(5f, 10f);
+
+        }
+
+        //Updating the spawn time of patients
+        if (patientCount == 2)
+        {
+            minimumInterval = 10f;
+            minimumInterval = 20f;
+        }
+        else if (patientCount == 4)
+        {
+            minimumInterval = 10f;
+            minimumInterval = 15f;
+        }
+        else if (patientCount == 8)
+        {
+            minimumInterval = 15f;
+            minimumInterval = 25f;
+        }
+        else if (patientCount == 10)
+        {
+            minimumInterval = 10f;
+            minimumInterval = 30f;
+        }
+        else if (patientCount == 12)
+        {
+            minimumInterval = 10f;
+            minimumInterval = 20f;
+        }
+        else if (patientCount == 14)
+        {
+            minimumInterval = 5f;
+            minimumInterval = 20f;
+        }
+        else if (patientCount == 16)
+        {
+            minimumInterval = 5f;
+            minimumInterval = 15f;
+        }
+        else
+        {
+            minimumInterval = 5f;
+            minimumInterval = 10f;
+        }
+    }
     IEnumerator RenderPatientEntrance(GameObject newPatient)
     {
         newPatient.GetComponentInChildren<Animator>().SetBool("IsWalking", true);
