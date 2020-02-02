@@ -28,6 +28,7 @@ public class OccupiedHospitalBed : MonoBehaviour
         {
             player.GetComponent<CarryAction>().Target = Target;
             player.GetComponent<CarryAction>().enabled = true;
+            GetComponent<EmptyHospitalBed>().enabled = true;
         }
     }
 
