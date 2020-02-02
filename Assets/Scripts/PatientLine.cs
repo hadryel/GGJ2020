@@ -91,7 +91,7 @@ public class PatientLine : MonoBehaviour
             {
                 inBed.secondTreatment = Random.Range(0, 4); //Randomize this later
 
-                inBed.lifeTime += Random.Range(10f, 20f);
+                inBed.lifeTime += Random.Range(30f, 40f);
             }
         }
         else if (patientCount < 10)
@@ -101,7 +101,7 @@ public class PatientLine : MonoBehaviour
             {
                 inBed.secondTreatment = Random.Range(0, 4); //Randomize this later
 
-                inBed.lifeTime += Random.Range(10f, 20f);
+                inBed.lifeTime += Random.Range(20f, 40f);
             }
         }
         else if (patientCount < 15)
@@ -111,7 +111,7 @@ public class PatientLine : MonoBehaviour
             {
                 inBed.secondTreatment = Random.Range(0, 4); //Randomize this later
 
-                inBed.lifeTime += Random.Range(5f, 20f);
+                inBed.lifeTime += Random.Range(10f, 20f);
             }
         }
         else if (patientCount < 20)
@@ -125,29 +125,34 @@ public class PatientLine : MonoBehaviour
         }
 
         //Updating the spawn time of patients
-        if (patientCount == 2)
+        if (patientCount == 1)
         {
-            minimumInterval = 10f;
             minimumInterval = 20f;
+            minimumInterval = 30f;
+        }
+        else if (patientCount == 2)
+        {
+            minimumInterval = 20f;
+            minimumInterval = 30f;
         }
         else if (patientCount == 4)
         {
-            minimumInterval = 10f;
-            minimumInterval = 15f;
+            minimumInterval = 25f;
+            minimumInterval = 40f;
         }
         else if (patientCount == 8)
         {
-            minimumInterval = 15f;
-            minimumInterval = 25f;
+            minimumInterval = 20f;
+            minimumInterval = 30f;
         }
         else if (patientCount == 10)
         {
-            minimumInterval = 10f;
+            minimumInterval = 15f;
             minimumInterval = 30f;
         }
         else if (patientCount == 12)
         {
-            minimumInterval = 10f;
+            minimumInterval = 15f;
             minimumInterval = 20f;
         }
         else if (patientCount == 14)

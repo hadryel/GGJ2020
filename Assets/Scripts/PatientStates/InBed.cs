@@ -6,7 +6,7 @@ public class InBed : MonoBehaviour
 {
     public GameObject CurrentBed;
 
-    public float lifeTime = 30f; // Randomize/Balance this - use static field to be called by GameManager or PatientLine
+    public float lifeTime = 45f; // Randomize/Balance this - use static field to be called by GameManager or PatientLine
 
     public int firstTreatment = -1;
     public int secondTreatment = -1; // -1 is no treatment

@@ -42,4 +42,14 @@ public class MainMenu : MonoBehaviour
         Credits.SetActive(false);
         Menu.SetActive(true);
     }
+
+    public void GoToInstructions()
+    {
+        SceneManager.LoadScene("Instructions");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
